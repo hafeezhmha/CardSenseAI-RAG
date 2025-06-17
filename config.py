@@ -2,13 +2,9 @@ import os
 from dotenv import load_dotenv, find_dotenv
 from openai import OpenAI
 
-# Load environment variables. Create a .env file if it doesn't exist.
+# Load environment variables from .env file
 load_dotenv()
 dotenv_path = find_dotenv()
-if dotenv_path == "":
-    with open(".env", "w") as f:
-        pass
-    dotenv_path = find_dotenv()
 
 client = OpenAI()
 

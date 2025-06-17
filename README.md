@@ -83,10 +83,13 @@ The first time you run the application, it will automatically create and populat
 
 ### Running the Command-Line Chat
 
-To test the bot's logic directly in your terminal, run the `rag.py` script:
+To test the bot's logic directly in your terminal, run `rag.py`. **The first time you run this, it will create a new Vector Store on your OpenAI account and save its ID to your `.env` file.**
+
 ```bash
+# This command will also perform the one-time setup for the vector store.
 python rag.py
 ```
+After running this, your `.env` file will be updated with the `VECTOR_STORE_ID`. You will need this for deployment.
 
 ### Running the API Server
 
@@ -100,10 +103,21 @@ The API will be available at `http://127.0.0.1:8000`. You can access the interac
 
 This project is configured for easy deployment to Vercel.
 
-1.  **Push to GitHub:** Commit and push your code to a GitHub repository.
-2.  **Import to Vercel:** Go to your Vercel dashboard and import the project from GitHub. Vercel will automatically detect the `vercel.json` configuration.
-3.  **Add Environment Variables:** In the project settings on Vercel, navigate to the "Environment Variables" section and add your `OPENAI_API_KEY`.
-4.  **Deploy:** Click "Deploy". Vercel will build and host your API.
+1.  **Get Your Vector Store ID:** Run the application locally one time to perform the initial setup and get your `VECTOR_STORE_ID`.
+    ```bash
+    python rag.py
+    ```
+    Copy the `VECTOR_STORE_ID` value from your `.env` file.
+
+2.  **Push to GitHub:** Commit and push all your latest code to a GitHub repository.
+
+3.  **Import to Vercel:** Go to your Vercel dashboard and import the project from GitHub. Vercel will automatically detect the `vercel.json` configuration.
+
+4.  **Add Environment Variables:** In the project settings on Vercel, navigate to the "Environment Variables" section. You **must** add the following two variables:
+    - `OPENAI_API_KEY`: Your secret key from OpenAI.
+    - `VECTOR_STORE_ID`: The ID you copied from your `.env` file in step 1.
+
+5.  **Deploy:** Click "Deploy". Vercel will build and host your API.
 
 ## 🔌 API Endpoint
 
