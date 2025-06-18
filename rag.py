@@ -1,82 +1,20 @@
 import os
-import json
+import time
 from dotenv import load_dotenv, find_dotenv, set_key
 from openai import OpenAI
-from chat import ask
-from vector_store import get_or_create_vector_store_id
+
 
 # Load environment variables. Create a .env file if it doesn't exist.
-load_dotenv()
 dotenv_path = find_dotenv()
-if dotenv_path == "":
+if not dotenv_path:
     with open(".env", "w") as f:
         pass
     dotenv_path = find_dotenv()
+load_dotenv(dotenv_path)
 
 client = OpenAI()
 
-
-def setup_vector_store():
-    """
-    Performs one-time setup for the RAG system.
-    1. Creates a vector store.
-    2. Uploads and polls files from txt_docs to the vector store.
-    3. Saves the vector store ID to the .env file.
-    """
-    print("Performing one-time setup for the vector store...")
-
-    # 1. Create a Vector Store
-    print("Creating a new vector store...")
-    vector_store = client.beta.vector_stores.create(name="Bank Information")
-
-    # 2. Upload files from txt_docs/
-    print("Uploading files to the vector store...")
-    txt_docs_path = "txt_docs"
-    file_paths = [
-        os.path.join(txt_docs_path, f)
-        for f in os.listdir(txt_docs_path)
-        if f.endswith(".txt")
-    ]
-    if not file_paths:
-        print(f"No .txt files found in '{txt_docs_path}'. Skipping file upload.")
-    else:
-        file_streams = [open(path, "rb") for path in file_paths]
-        try:
-            file_batch = client.beta.vector_stores.file_batches.upload_and_poll(
-                vector_store_id=vector_store.id, files=file_streams
-            )
-            print(f"File batch status: {file_batch.status}")
-        finally:
-            for stream in file_streams:
-                stream.close()
-
-    # 3. Save Vector Store ID to .env file
-    print("Saving Vector Store ID to .env file...")
-    set_key(dotenv_path, "VECTOR_STORE_ID", vector_store.id)
-    # Remove old ASSISTANT_ID if it exists
-    set_key(dotenv_path, "ASSISTANT_ID", "")
-
-
-    print("Setup complete.")
-    return vector_store.id
-
-
-def get_or_create_vector_store_id():
-    """
-    Returns the vector store ID from environment variables.
-    If not found, runs the setup process.
-    """
-    vector_store_id = os.getenv("VECTOR_STORE_ID")
-    if not vector_store_id:
-        print("Vector Store ID not found. Running setup...")
-        vector_store_id = setup_vector_store()
-        # Reload dotenv to get the new variables for the current run
-        load_dotenv(override=True)
-    else:
-        print(f"Found existing Vector Store ID: {vector_store_id}")
-
-    return vector_store_id
-
+# --- Assistant & Vector Store Setup ---
 
 def load_system_prompt():
     """Loads the system prompt from the markdown file."""
@@ -85,24 +23,80 @@ def load_system_prompt():
             return f.read()
     except FileNotFoundError:
         print("Error: `cardsense_system_prompt.md` not found.")
-        print("Please make sure the system prompt file is in the same directory.")
         exit(1)
 
+def get_or_create_assistant():
+    """
+    Retrieves the assistant ID from .env or creates a new assistant if not found.
+    """
+    assistant_id = os.getenv("ASSISTANT_ID")
+    vector_store_id = get_or_create_vector_store()
 
-# --- Global Variables ---
-vector_store_id = get_or_create_vector_store_id()
-system_prompt = load_system_prompt()
-# --- End of Global Variables ---
+    if assistant_id:
+        print(f"Found existing assistant ID: {assistant_id}")
+        # Optional: Update assistant if needed
+        # client.beta.assistants.update(assistant_id, tool_resources={"file_search": {"vector_store_ids": [vector_store_id]}})
+        return assistant_id
 
+    print("Assistant ID not found. Creating a new assistant...")
+    system_prompt = load_system_prompt()
+    assistant = client.beta.assistants.create(
+        name="CardSense AI",
+        instructions=system_prompt,
+        model="gpt-4o-mini",
+        tools=[{"type": "file_search"}],
+        tool_resources={"file_search": {"vector_store_ids": [vector_store_id]}},
+    )
+    assistant_id = assistant.id
+    set_key(dotenv_path, "ASSISTANT_ID", assistant_id)
+    print(f"New assistant created with ID: {assistant_id}")
+    return assistant_id
+
+def get_or_create_vector_store():
+    """
+    Retrieves the vector store ID from .env or creates a new one if not found.
+    """
+    vector_store_id = os.getenv("VECTOR_STORE_ID")
+    if vector_store_id:
+        print(f"Found existing vector store ID: {vector_store_id}")
+        return vector_store_id
+
+    print("Vector Store ID not found. Creating a new vector store...")
+    vector_store = client.vector_stores.create(name="CardSense Knowledge Base")
+    
+    # Upload files
+    txt_docs_path = "txt_docs"
+    try:
+        file_paths = [os.path.join(txt_docs_path, f) for f in os.listdir(txt_docs_path) if f.endswith(".txt")]
+        if file_paths:
+            file_streams = [open(path, "rb") for path in file_paths]
+            client.vector_stores.file_batches.upload_and_poll(
+                vector_store_id=vector_store.id, files=file_streams
+            )
+            for stream in file_streams:
+                stream.close()
+            print(f"Uploaded {len(file_paths)} files to vector store.")
+        else:
+            print("No .txt files found in 'txt_docs' to upload.")
+    except Exception as e:
+        print(f"Error during file upload: {e}")
+
+    vector_store_id = vector_store.id
+    set_key(dotenv_path, "VECTOR_STORE_ID", vector_store_id)
+    print(f"New vector store created with ID: {vector_store_id}")
+    return vector_store_id
+
+# --- Chat Functionality ---
 
 def ask(q, previous_response_id=None):
     """
     Asks a question using the Responses API, maintaining conversation history.
     """
-    print("\\nThinking...")
+    vector_store_id = get_or_create_vector_store()
+    system_prompt = load_system_prompt()
+
+    print("\nThinking...")
     try:
-        # The tool_resources parameter is not supported in all SDK versions.
-        # Instead, we pass the vector_store_id directly within the tool definition.
         response = client.responses.create(
             model="gpt-4o-mini",
             instructions=system_prompt,
@@ -135,41 +129,61 @@ def ask(q, previous_response_id=None):
         return f"An error occurred while processing your request: {e}", previous_response_id
 
 
+# --- Main Application ---
+
 def main():
-    """
-    Main function to run the CardSense AI chat loop.
-    """
-    print("\\nStarting CardSense AI...")
-    # This call ensures the vector store is set up before we start the chat loop.
-    get_or_create_vector_store_id()
-
-    # Store the response ID to maintain conversation context
-    previous_response_id = None
-    print("\\nWelcome to CardSense AI! Ask me about credit card questions.")
+    """Main chat loop for CardSense AI."""
+    print("\nInitializing CardSense AI...")
+    # This call ensures the vector store and assistant are set up before the chat.
+    get_or_create_assistant()
+    
+    print("\nWelcome to CardSense AI! Ask me about your credit cards.")
     print("Type 'exit' or 'quit' to end the conversation.")
-
+    
+    previous_response_id = None
     while True:
         try:
-            question = input("\\nYour question: ")
+            question = input("\nYour question: ")
             if question.lower().strip() in ["exit", "quit"]:
                 print("Exiting assistant. Goodbye!")
                 break
-
             if not question.strip():
                 continue
 
-            response_text, new_response_id = ask(question, previous_response_id=previous_response_id)
+            response_text, new_response_id = ask(question, previous_response_id)
             previous_response_id = new_response_id
 
             if response_text:
-                print(f"\\nAssistant:\\n{response_text}")
+                print(f"\nAssistant:\n{response_text}")
             else:
-                print("\\nAssistant: I couldn't find an answer to your question. Please try again.")
+                 print("\nAssistant: I couldn't find an answer. Please try again.")
 
         except (KeyboardInterrupt, EOFError):
-            print("\\nExiting assistant. Goodbye!")
+            print("\nExiting assistant. Goodbye!")
             break
+
+def reset_and_recreate():
+    """Resets the environment by clearing IDs and recreating the assistant and vector store."""
+    print("Resetting .env file...")
+    set_key(dotenv_path, "ASSISTANT_ID", "")
+    set_key(dotenv_path, "VECTOR_STORE_ID", "")
+    print("Recreating assistant and vector store...")
+    get_or_create_assistant() # This will trigger the creation logic
+    print("Reset complete. You can now run the chat.")
 
 
 if __name__ == "__main__":
-    main()
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Run the CardSense AI chat assistant.")
+    parser.add_argument(
+        "--reset",
+        action="store_true",
+        help="Reset and recreate the assistant and vector store.",
+    )
+    args = parser.parse_args()
+
+    if args.reset:
+        reset_and_recreate()
+    else:
+        main()
