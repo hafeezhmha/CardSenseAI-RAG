@@ -1,16 +1,15 @@
 import os
 import time
-from dotenv import load_dotenv, find_dotenv, set_key
+from dotenv import load_dotenv, find_dotenv
 from openai import OpenAI
 
 
-# Load environment variables. Create a .env file if it doesn't exist.
-dotenv_path = find_dotenv()
-if not dotenv_path:
-    with open(".env", "w") as f:
-        pass
-    dotenv_path = find_dotenv()
-load_dotenv(dotenv_path)
+# Load environment variables without trying to create a .env file
+try:
+    load_dotenv()
+except Exception:
+    # Silently continue if .env cannot be loaded
+    pass
 
 client = OpenAI()
 
@@ -23,11 +22,11 @@ def load_system_prompt():
             return f.read()
     except FileNotFoundError:
         print("Error: `cardsense_system_prompt.md` not found.")
-        exit(1)
+        return "You are CardSense AI, a helpful assistant for credit card information."
 
 def get_or_create_assistant():
     """
-    Retrieves the assistant ID from .env or creates a new assistant if not found.
+    Retrieves the assistant ID from environment or creates a new assistant if not found.
     """
     assistant_id = os.getenv("ASSISTANT_ID")
     vector_store_id = get_or_create_vector_store()
@@ -48,13 +47,12 @@ def get_or_create_assistant():
         tool_resources={"file_search": {"vector_store_ids": [vector_store_id]}},
     )
     assistant_id = assistant.id
-    set_key(dotenv_path, "ASSISTANT_ID", assistant_id)
     print(f"New assistant created with ID: {assistant_id}")
     return assistant_id
 
 def get_or_create_vector_store():
     """
-    Retrieves the vector store ID from .env or creates a new one if not found.
+    Retrieves the vector store ID from environment or creates a new one if not found.
     """
     vector_store_id = os.getenv("VECTOR_STORE_ID")
     if vector_store_id:
@@ -82,7 +80,6 @@ def get_or_create_vector_store():
         print(f"Error during file upload: {e}")
 
     vector_store_id = vector_store.id
-    set_key(dotenv_path, "VECTOR_STORE_ID", vector_store_id)
     print(f"New vector store created with ID: {vector_store_id}")
     return vector_store_id
 
@@ -164,9 +161,7 @@ def main():
 
 def reset_and_recreate():
     """Resets the environment by clearing IDs and recreating the assistant and vector store."""
-    print("Resetting .env file...")
-    set_key(dotenv_path, "ASSISTANT_ID", "")
-    set_key(dotenv_path, "VECTOR_STORE_ID", "")
+    print("This function is not available in production environments.")
     print("Recreating assistant and vector store...")
     get_or_create_assistant() # This will trigger the creation logic
     print("Reset complete. You can now run the chat.")

@@ -1,0 +1,104 @@
+"TimeUTC","timestampInMs","requestPath","requestMethod","requestQueryString","responseStatusCode","requestId","requestUserAgent","level","environment","branch","vercelCache","type","function","host","deploymentDomain","deploymentId","durationMs","region","maxMemoryUsed","memorySize","message","projectId","traceId","sessionId","invocationId","instanceId"
+"2025-06-18 07:27:32",1750231652436,"card-sense-ai-rag.vercel.app/favicon.ico","GET","",-1,"jz7vs-1750231650508-e4d42e8a3583","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36","error","production","main","MISS","lambda","/api/index.py","card-sense-ai-rag.vercel.app","card-sense-ai-rag.vercel.app","dpl_4djyeSZegpbzy4fR1WSkdQ1qgWq5",-1,"iad1",-1,-1,"Traceback (most recent call last):
+File ""/var/task/vc__handler__python.py"", line 14, in <module>
+__vc_spec.loader.exec_module(__vc_module)
+File ""<frozen importlib._bootstrap_external>"", line 999, in exec_module
+File ""<frozen importlib._bootstrap>"", line 488, in _call_with_frames_removed
+File ""/var/task/api/index.py"", line 5, in <module>
+from rag import ask, get_or_create_vector_store
+File ""/var/task/rag.py"", line 10, in <module>
+with open("".env"", ""w"") as f:
+^^^^^^^^^^^^^^^^^
+OSError: [Errno 30] Read-only file system: '.env'
+Python process exited with exit status: 1. The logs above can help with debugging the issue.","prj_qjnm691hNwPcAomb7kkbTHdXAklA","","","01JY0YZ4AAG9ANNE4N50P0GYA3",""
+"2025-06-18 07:27:30",1750231650634,"card-sense-ai-rag.vercel.app/favicon.ico","GET","",500,"jz7vs-1750231650508-e4d42e8a3583","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36","error","production","main","MISS","lambda","/api/index.py","card-sense-ai-rag.vercel.app","card-sense-ai-rag.vercel.app","dpl_4djyeSZegpbzy4fR1WSkdQ1qgWq5",1779,"iad1",105,1024,"","prj_qjnm691hNwPcAomb7kkbTHdXAklA","","","01JY0YZ4AAG9ANNE4N50P0GYA3",""
+"2025-06-18 07:27:30",1750231650237,"card-sense-ai-rag.vercel.app/","GET","",-1,"z4qz5-1750231647795-d5ce634db9bc","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36","error","production","main","MISS","lambda","/api/index.py","card-sense-ai-rag.vercel.app","card-sense-ai-rag.vercel.app","dpl_4djyeSZegpbzy4fR1WSkdQ1qgWq5",-1,"iad1",-1,-1,"Traceback (most recent call last):
+File ""/var/task/vc__handler__python.py"", line 14, in <module>
+__vc_spec.loader.exec_module(__vc_module)
+File ""<frozen importlib._bootstrap_external>"", line 999, in exec_module
+File ""<frozen importlib._bootstrap>"", line 488, in _call_with_frames_removed
+File ""/var/task/api/index.py"", line 5, in <module>
+from rag import ask, get_or_create_vector_store
+File ""/var/task/rag.py"", line 10, in <module>
+with open("".env"", ""w"") as f:
+^^^^^^^^^^^^^^^^^
+OSError: [Errno 30] Read-only file system: '.env'
+Python process exited with exit status: 1. The logs above can help with debugging the issue.","prj_qjnm691hNwPcAomb7kkbTHdXAklA","","","01JY0YZ25XXWSBAMX3TP7F4DRD",""
+"2025-06-18 07:27:28",1750231648445,"card-sense-ai-rag.vercel.app/","GET","",500,"z4qz5-1750231647795-d5ce634db9bc","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36","error","production","main","MISS","lambda","/api/index.py","card-sense-ai-rag.vercel.app","card-sense-ai-rag.vercel.app","dpl_4djyeSZegpbzy4fR1WSkdQ1qgWq5",1771,"iad1",105,1024,"","prj_qjnm691hNwPcAomb7kkbTHdXAklA","","","01JY0YZ25XXWSBAMX3TP7F4DRD",""
+"2025-06-18 07:24:09",1750231449975,"card-sense-ai-qbbnq2xf4-hafeezs-projects-353dd42e.vercel.app/favicon.ico","GET","",-1,"tpg9w-1750231447998-9a35712cb90e","vercel-screenshot/1.0","error","production","main","MISS","lambda","/api/index.py","card-sense-ai-qbbnq2xf4-hafeezs-projects-353dd42e.vercel.app","card-sense-ai-qbbnq2xf4-hafeezs-projects-353dd42e.vercel.app","dpl_4djyeSZegpbzy4fR1WSkdQ1qgWq5",-1,"iad1",-1,-1,"Traceback (most recent call last):
+File ""/var/task/vc__handler__python.py"", line 14, in <module>
+__vc_spec.loader.exec_module(__vc_module)
+File ""<frozen importlib._bootstrap_external>"", line 999, in exec_module
+File ""<frozen importlib._bootstrap>"", line 488, in _call_with_frames_removed
+File ""/var/task/api/index.py"", line 5, in <module>
+from rag import ask, get_or_create_vector_store
+File ""/var/task/rag.py"", line 10, in <module>
+with open("".env"", ""w"") as f:
+^^^^^^^^^^^^^^^^^
+OSError: [Errno 30] Read-only file system: '.env'
+Python process exited with exit status: 1. The logs above can help with debugging the issue.","prj_qjnm691hNwPcAomb7kkbTHdXAklA","","","01JY0YRYJ16YWR08ZGTN4W848S",""
+"2025-06-18 07:24:08",1750231448129,"card-sense-ai-qbbnq2xf4-hafeezs-projects-353dd42e.vercel.app/favicon.ico","GET","",500,"tpg9w-1750231447998-9a35712cb90e","vercel-screenshot/1.0","error","production","main","MISS","lambda","/api/index.py","card-sense-ai-qbbnq2xf4-hafeezs-projects-353dd42e.vercel.app","card-sense-ai-qbbnq2xf4-hafeezs-projects-353dd42e.vercel.app","dpl_4djyeSZegpbzy4fR1WSkdQ1qgWq5",1822,"iad1",105,1024,"","prj_qjnm691hNwPcAomb7kkbTHdXAklA","","","01JY0YRYJ16YWR08ZGTN4W848S",""
+"2025-06-18 07:24:07",1750231447914,"card-sense-ai-qbbnq2xf4-hafeezs-projects-353dd42e.vercel.app/","GET","",-1,"tvshr-1750231446066-9cfabf4442d7","vercel-screenshot/1.0","error","production","main","MISS","lambda","/api/index.py","card-sense-ai-qbbnq2xf4-hafeezs-projects-353dd42e.vercel.app","card-sense-ai-qbbnq2xf4-hafeezs-projects-353dd42e.vercel.app","dpl_4djyeSZegpbzy4fR1WSkdQ1qgWq5",-1,"iad1",-1,-1,"Traceback (most recent call last):
+File ""/var/task/vc__handler__python.py"", line 14, in <module>
+__vc_spec.loader.exec_module(__vc_module)
+File ""<frozen importlib._bootstrap_external>"", line 999, in exec_module
+File ""<frozen importlib._bootstrap>"", line 488, in _call_with_frames_removed
+File ""/var/task/api/index.py"", line 5, in <module>
+from rag import ask, get_or_create_vector_store
+File ""/var/task/rag.py"", line 10, in <module>
+with open("".env"", ""w"") as f:
+^^^^^^^^^^^^^^^^^
+OSError: [Errno 30] Read-only file system: '.env'
+Python process exited with exit status: 1. The logs above can help with debugging the issue.","prj_qjnm691hNwPcAomb7kkbTHdXAklA","","","01JY0YRWJNRE9VRMJ2GZMKAYT1",""
+"2025-06-18 07:24:06",1750231446101,"card-sense-ai-qbbnq2xf4-hafeezs-projects-353dd42e.vercel.app/","GET","",500,"tvshr-1750231446066-9cfabf4442d7","vercel-screenshot/1.0","error","production","main","MISS","lambda","/api/index.py","card-sense-ai-qbbnq2xf4-hafeezs-projects-353dd42e.vercel.app","card-sense-ai-qbbnq2xf4-hafeezs-projects-353dd42e.vercel.app","dpl_4djyeSZegpbzy4fR1WSkdQ1qgWq5",1791,"iad1",106,1024,"","prj_qjnm691hNwPcAomb7kkbTHdXAklA","","","01JY0YRWJNRE9VRMJ2GZMKAYT1",""
+"2025-06-18 07:24:03",1750231443408,"card-sense-ai-qbbnq2xf4-hafeezs-projects-353dd42e.vercel.app/favicon.ico","GET","",-1,"kv2b9-1750231441433-d92f25a4b20a","vercel-screenshot/1.0","error","production","main","MISS","lambda","/api/index.py","card-sense-ai-qbbnq2xf4-hafeezs-projects-353dd42e.vercel.app","card-sense-ai-qbbnq2xf4-hafeezs-projects-353dd42e.vercel.app","dpl_4djyeSZegpbzy4fR1WSkdQ1qgWq5",-1,"iad1",-1,-1,"Traceback (most recent call last):
+File ""/var/task/vc__handler__python.py"", line 14, in <module>
+__vc_spec.loader.exec_module(__vc_module)
+File ""<frozen importlib._bootstrap_external>"", line 999, in exec_module
+File ""<frozen importlib._bootstrap>"", line 488, in _call_with_frames_removed
+File ""/var/task/api/index.py"", line 5, in <module>
+from rag import ask, get_or_create_vector_store
+File ""/var/task/rag.py"", line 10, in <module>
+with open("".env"", ""w"") as f:
+^^^^^^^^^^^^^^^^^
+OSError: [Errno 30] Read-only file system: '.env'
+Python process exited with exit status: 1. The logs above can help with debugging the issue.","prj_qjnm691hNwPcAomb7kkbTHdXAklA","","","01JY0YRR53GRJXN6262JGNVPR8",""
+"2025-06-18 07:24:01",1750231441571,"card-sense-ai-qbbnq2xf4-hafeezs-projects-353dd42e.vercel.app/favicon.ico","GET","",500,"kv2b9-1750231441433-d92f25a4b20a","vercel-screenshot/1.0","error","production","main","MISS","lambda","/api/index.py","card-sense-ai-qbbnq2xf4-hafeezs-projects-353dd42e.vercel.app","card-sense-ai-qbbnq2xf4-hafeezs-projects-353dd42e.vercel.app","dpl_4djyeSZegpbzy4fR1WSkdQ1qgWq5",1823,"iad1",105,1024,"","prj_qjnm691hNwPcAomb7kkbTHdXAklA","","","01JY0YRR53GRJXN6262JGNVPR8",""
+"2025-06-18 07:24:01",1750231441304,"card-sense-ai-qbbnq2xf4-hafeezs-projects-353dd42e.vercel.app/","GET","",-1,"tbckw-1750231439354-d38943bdd38e","vercel-screenshot/1.0","error","production","main","MISS","lambda","/api/index.py","card-sense-ai-qbbnq2xf4-hafeezs-projects-353dd42e.vercel.app","card-sense-ai-qbbnq2xf4-hafeezs-projects-353dd42e.vercel.app","dpl_4djyeSZegpbzy4fR1WSkdQ1qgWq5",-1,"iad1",-1,-1,"Traceback (most recent call last):
+File ""/var/task/vc__handler__python.py"", line 14, in <module>
+__vc_spec.loader.exec_module(__vc_module)
+File ""<frozen importlib._bootstrap_external>"", line 999, in exec_module
+File ""<frozen importlib._bootstrap>"", line 488, in _call_with_frames_removed
+File ""/var/task/api/index.py"", line 5, in <module>
+from rag import ask, get_or_create_vector_store
+File ""/var/task/rag.py"", line 10, in <module>
+with open("".env"", ""w"") as f:
+^^^^^^^^^^^^^^^^^
+OSError: [Errno 30] Read-only file system: '.env'
+Python process exited with exit status: 1. The logs above can help with debugging the issue.","prj_qjnm691hNwPcAomb7kkbTHdXAklA","","","01JY0YRP3M8Q8ZMNRQR0JV0C66",""
+"2025-06-18 07:23:59",1750231439847,"card-sense-ai-qbbnq2xf4-hafeezs-projects-353dd42e.vercel.app/","GET","",-1,"qvcnw-1750231435306-601208954324","vercel-screenshot/1.0","error","production","main","MISS","lambda","/api/index.py","card-sense-ai-qbbnq2xf4-hafeezs-projects-353dd42e.vercel.app","card-sense-ai-qbbnq2xf4-hafeezs-projects-353dd42e.vercel.app","dpl_4djyeSZegpbzy4fR1WSkdQ1qgWq5",-1,"iad1",-1,-1,"Traceback (most recent call last):
+File ""/var/task/vc__handler__python.py"", line 14, in <module>
+__vc_spec.loader.exec_module(__vc_module)
+File ""<frozen importlib._bootstrap_external>"", line 999, in exec_module
+File ""<frozen importlib._bootstrap>"", line 488, in _call_with_frames_removed
+File ""/var/task/api/index.py"", line 5, in <module>
+from rag import ask, get_or_create_vector_store
+File ""/var/task/rag.py"", line 10, in <module>
+with open("".env"", ""w"") as f:
+^^^^^^^^^^^^^^^^^
+OSError: [Errno 30] Read-only file system: '.env'
+Python process exited with exit status: 1. The logs above can help with debugging the issue.
+Traceback (most recent call last):
+File ""/var/task/vc__handler__python.py"", line 14, in <module>
+__vc_spec.loader.exec_module(__vc_module)
+File ""<frozen importlib._bootstrap_external>"", line 999, in exec_module
+File ""<frozen importlib._bootstrap>"", line 488, in _call_with_frames_removed
+File ""/var/task/api/index.py"", line 5, in <module>
+from rag import ask, get_or_create_vector_store
+File ""/var/task/rag.py"", line 10, in <module>
+with open("".env"", ""w"") as f:
+^^^^^^^^^^^^^^^^^
+OSError: [Errno 30] Read-only file system: '.env'
+Python process exited with exit status: 1. The logs above can help with debugging the issue.","prj_qjnm691hNwPcAomb7kkbTHdXAklA","","","01JY0YRJ88T8TNRE34MF3ZPHR5",""
+"2025-06-18 07:23:59",1750231439476,"card-sense-ai-qbbnq2xf4-hafeezs-projects-353dd42e.vercel.app/","GET","",500,"tbckw-1750231439354-d38943bdd38e","vercel-screenshot/1.0","error","production","main","MISS","lambda","/api/index.py","card-sense-ai-qbbnq2xf4-hafeezs-projects-353dd42e.vercel.app","card-sense-ai-qbbnq2xf4-hafeezs-projects-353dd42e.vercel.app","dpl_4djyeSZegpbzy4fR1WSkdQ1qgWq5",1810,"iad1",105,1024,"","prj_qjnm691hNwPcAomb7kkbTHdXAklA","","","01JY0YRP3M8Q8ZMNRQR0JV0C66",""
+"2025-06-18 07:23:55",1750231435528,"card-sense-ai-qbbnq2xf4-hafeezs-projects-353dd42e.vercel.app/","GET","",500,"qvcnw-1750231435306-601208954324","vercel-screenshot/1.0","error","production","main","MISS","lambda","/api/index.py","card-sense-ai-qbbnq2xf4-hafeezs-projects-353dd42e.vercel.app","card-sense-ai-qbbnq2xf4-hafeezs-projects-353dd42e.vercel.app","dpl_4djyeSZegpbzy4fR1WSkdQ1qgWq5",2001,"iad1",105,1024,"","prj_qjnm691hNwPcAomb7kkbTHdXAklA","","","01JY0YRJ88T8TNRE34MF3ZPHR5",""

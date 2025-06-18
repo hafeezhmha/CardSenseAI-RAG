@@ -29,8 +29,12 @@ def startup_event():
     This prevents the first API call from being slow due to setup.
     """
     print("Server starting up...")
-    get_or_create_vector_store()
-    print("Vector store is ready.")
+    try:
+        get_or_create_vector_store()
+        print("Vector store is ready.")
+    except Exception as e:
+        print(f"Warning: Could not initialize vector store: {e}")
+        print("The application will attempt to create it when needed.")
 
 @app.get("/", summary="Health Check", description="A simple health check endpoint to confirm the server is running.")
 async def health_check():
