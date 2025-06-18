@@ -3,35 +3,78 @@ This document contains information about the following credit cards:
 - ICICI Sapphiro Credit Card
 - SBI Card Prime
 
+---
+
 Question: I am travelling from New Delhi to Thailand. What card should I use for booking tickets and hotels for maximum benefits?
-Answer: Use your HDFC Infinia via the SmartBuy portal—earns 5× reward points (~5 % back) and grants unlimited domestic & international lounge access. ICICI Sapphiro (4 pts/₹100 ≈1 %) and SBI Prime (2 pts/₹100) offer lower returns, so keep them as backups.
+Answer:
+- **HDFC Infinia:** The best option. Use it via the SmartBuy portal to earn 5x reward points (~5% back) and get unlimited domestic & international lounge access.
+- **ICICI Sapphiro:** Lower returns (4 pts/₹100 ≈ 1%). Keep as a backup.
+- **SBI Prime:** Lower returns (2 pts/₹100). Keep as a backup.
+
+---
 
 Question: I have to get petrol; which of my cards is best for fuel?
-Answer: All three waive the 1 % fuel surcharge, but ICICI Sapphiro auto‑credits the waiver on spends up to ₹4 000 and is the smoothest option. Infinia and Prime earn no fuel points, so swipe Sapphiro.
+Answer:
+- **ICICI Sapphiro:** The best option. It auto-credits the 1% fuel surcharge waiver on spends up to ₹4,000.
+- **HDFC Infinia:** Waives the 1% surcharge but earns no fuel points.
+- **SBI Prime:** Waives the 1% surcharge but earns no fuel points.
+
+---
 
 Question: Which of my cards should I use for movie ticket booking?
-Answer: ICICI Sapphiro—Buy‑1‑Get‑1 on BookMyShow twice a month (₹500 cap). After the quota, SBI Prime gives one free ticket (₹250 cap) monthly. Infinia has no standing movie offer.
+Answer:
+- **ICICI Sapphiro:** The best option. Offers Buy-1-Get-1 on BookMyShow twice a month (up to a ₹500 cap).
+- **SBI Prime:** Good backup. Offers one free ticket per month (up to a ₹250 cap) after the ICICI quota is used.
+- **HDFC Infinia:** Has no standing movie offer.
+
+---
 
 Question: Which of my cards has the maximum airport lounge benefits? Please provide numbers for domestic and international access.
-Answer: HDFC Infinia: Unlimited domestic lounges and unlimited international visits via Priority Pass for you and add‑ons. ICICI Sapphiro: 4 domestic visits per quarter (after ₹75k spend in prior quarter) and 2 international visits per year. SBI Prime: 8 domestic visits per year (2 per quarter) and 4 international visits per year (max 2 per quarter) via Priority Pass.
+Answer:
+- **HDFC Infinia:** Unlimited domestic and international lounge visits via Priority Pass for primary and add-on cardholders.
+- **ICICI Sapphiro:** 4 domestic visits per quarter (requires ₹75k spend in the previous quarter) and 2 international visits per year.
+- **SBI Prime:** 8 domestic visits per year (max 2 per quarter) and 4 international visits per year via Priority Pass (max 2 per quarter).
+
+---
 
 Question: What is the reward rate on my HDFC card?
-Answer: HDFC Infinia reward rate: Base earn 5 Reward Points per ₹150 (~3.3 % back on SmartBuy). On SmartBuy partners, earns up to 10× points. Each point is worth ₹1 for flights and hotels on SmartBuy; ~₹0.50 for gift cards.
+Answer:
+- **Base Reward Rate:** 5 Reward Points per ₹150 spent (~3.3% back).
+- **Accelerated Rewards:** Up to 10x points on SmartBuy partners.
+- **Point Value:**
+    - ₹1 for flights and hotels on SmartBuy.
+    - ~₹0.50 for gift cards.
+
+---
 
 Question: Which card has the lowest forex markup for international spending?
-Answer: HDFC Infinia levies only 2 % on foreign-currency swipes, while ICICI Sapphiro and SBI Prime each charge 3.5 %.
+Answer:
+- **HDFC Infinia:** 2% (This is the lowest).
+- **ICICI Sapphiro:** 3.5%.
+- **SBI Prime:** 3.5%.
+
+---
 
 Question: Does my card offer Club Marriott or similar memberships?
-Answer: Infinia gives a complimentary Club Marriott membership in year 1. SBI Prime offers Trident Privilege Red (and formerly Club Vistara Silver) on request. Sapphiro has no hotel-loyalty tie-in.
+Answer:
+- **HDFC Infinia:** Yes, a complimentary Club Marriott membership for the first year.
+- **SBI Prime:** Yes, a Trident Privilege Red membership is available on request.
+- **ICICI Sapphiro:** No, it has no hotel-loyalty tie-ins.
+
+---
 
 Question: What are the hidden perks of my cards?
-Answer: "• Infinia: unlimited worldwide golf rounds & lessons, 24×7 concierge.
-• Sapphiro: up to 4 complimentary golf rounds/mo on meeting spend trigger and 2 free international lounge visits/yr via Priority Pass.
-• Prime: milestone e-vouchers—₹1000 Pizza Hut per ₹50k/quarter & ₹7 000 Yatra/Pantaloons at ₹5L spend"
+Answer:
+- **HDFC Infinia:** Unlimited worldwide golf rounds & lessons, and a 24x7 concierge service.
+- **ICICI Sapphiro:** Up to 4 complimentary golf rounds per month (on meeting a spend trigger) and 2 free international lounge visits per year via Priority Pass.
+- **SBI Prime:** Milestone e-vouchers, including a ₹1000 Pizza Hut voucher for spending ₹50k per quarter, and a ₹7,000 Yatra/Pantaloons voucher for spending ₹5L annually.
+
+---
 
 Question: Which card should I apply for next based on my lifestyle?
-Answer: "Consider a 0 %–1.5 % forex specialist:
-• RBL World Safari (0 % markup, 6 lounge visits) 
-• IDFC FIRST Wealth (1.5 % markup, lifetime-free) 
-• Scapia Federal (0 % markup, unlimited domestic lounges) "
+Answer:
+Based on your spending, you might consider a card with a low forex markup. Here are some options:
+- **RBL World Safari:** 0% markup, 6 lounge visits.
+- **IDFC FIRST Wealth:** 1.5% markup, lifetime-free.
+- **Scapia Federal:** 0% markup, unlimited domestic lounges.
 	
