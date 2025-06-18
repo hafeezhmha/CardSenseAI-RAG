@@ -2,7 +2,7 @@ import uvicorn
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
 from typing import Optional
-from rag import ask
+from rag import ask, get_or_create_vector_store
 
 # Initialize the FastAPI app
 app = FastAPI(
@@ -29,7 +29,7 @@ def startup_event():
     This prevents the first API call from being slow due to setup.
     """
     print("Server starting up...")
-    get_or_create_vector_store_id()
+    get_or_create_vector_store()
     print("Vector store is ready.")
 
 @app.get("/", summary="Health Check", description="A simple health check endpoint to confirm the server is running.")
