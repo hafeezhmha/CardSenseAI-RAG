@@ -83,6 +83,69 @@ def get_or_create_vector_store():
     print(f"New vector store created with ID: {vector_store_id}")
     return vector_store_id
 
+def format_context_for_prompt(context: dict) -> str:
+    """Formats the user context JSON object into a readable string for the AI."""
+    if not context:
+        return ""
+
+    lines = ["---", "**User Context Summary**", ""]
+
+    # User Profile
+    profile = context.get("user_profile", {})
+    if profile:
+        lines.append("**User Profile:**")
+        spending = profile.get("monthly_spending_range")
+        if spending:
+            lines.append(f"- **Monthly Spending:** {spending}")
+
+        optimizations = profile.get("preferred_optimizations", [])
+        if optimizations:
+            lines.append(f"- **Primary Goals:** {', '.join(optimizations)}")
+
+        categories = profile.get("preferred_categories", [])
+        if categories:
+            lines.append(f"- **Preferred Categories:** {', '.join(categories)}")
+
+        additional_info = profile.get("additional_info")
+        if additional_info:
+            lines.append(f"- **Note:** {additional_info}")
+        lines.append("")
+
+    # Owned Cards
+    cards = context.get("owned_cards", [])
+    if cards:
+        lines.append("**Owned Cards:**")
+        for card in cards:
+            name = card.get('name', 'N/A')
+            is_primary = " (Primary)" if card.get("is_primary") else ""
+            lines.append(f"- **{name}{is_primary}**")
+
+            fee = card.get("annual_fee")
+            if fee is not None:
+                lines.append(f"  - Annual Fee: ₹{fee}")
+
+            benefits_dict = card.get("benefits", {})
+            if benefits_dict:
+                benefits_str = ', '.join([f"{k.replace('_', ' ').title()}" for k, v in benefits_dict.items() if v])
+                if benefits_str:
+                    lines.append(f"  - Key Benefits: {benefits_str}")
+        lines.append("")
+
+    # Spending Patterns
+    spending = context.get("spending_patterns", [])
+    if spending:
+        lines.append("**Top Spending Categories:**")
+        for s in spending:
+            category = s.get("category")
+            amount = s.get("amount")
+            percentage = s.get("percentage")
+            if category and amount and percentage:
+                lines.append(f"- **{category}:** ₹{amount} ({percentage}%)")
+        lines.append("")
+
+    lines.append("---")
+    return "\n".join(lines)
+
 # --- Chat Functionality ---
 
 def ask(q, user_context=None, previous_response_id=None):
@@ -93,7 +156,10 @@ def ask(q, user_context=None, previous_response_id=None):
     system_prompt = load_system_prompt()
 
     # Combine user question with their context
-    if user_context:
+    if user_context and isinstance(user_context, dict):
+        formatted_context = format_context_for_prompt(user_context)
+        q = f"{formatted_context}\n\nBased on the context above, please answer the following question:\nQuestion: {q}"
+    elif user_context and isinstance(user_context, str): # Keep old functionality
         q = f"User Context:\n{user_context}\n\nQuestion:\n{q}"
 
     print("\nThinking...")

@@ -14,7 +14,7 @@ app = FastAPI(
 # --- API Models ---
 class ChatRequest(BaseModel):
     question: str = Field(..., description="The user's question for the assistant.")
-    user_context: Optional[str] = Field(None, description="The user's preferences and card information.")
+    user_context: Optional[dict] = Field(None, description="A JSON object containing the user's profile, cards, and spending habits.")
     previous_response_id: Optional[str] = Field(None, description="The ID of the previous response to maintain conversation context.")
 
 class ChatResponse(BaseModel):
