@@ -161,6 +161,9 @@ def ask(q, user_context=None, previous_response_id=None):
         q = f"{formatted_context}\n\nBased on the context above, please answer the following question:\nQuestion: {q}"
     elif user_context and isinstance(user_context, str): # Keep old functionality
         q = f"User Context:\n{user_context}\n\nQuestion:\n{q}"
+    else:
+        # Add a clear instruction when no user context is provided
+        q = f"Note: The user has not provided any information about their credit cards yet. Please do not assume they have any specific cards.\n\nQuestion: {q}"
 
     print("\nThinking...")
     try:
