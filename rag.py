@@ -85,12 +85,16 @@ def get_or_create_vector_store():
 
 # --- Chat Functionality ---
 
-def ask(q, previous_response_id=None):
+def ask(q, user_context=None, previous_response_id=None):
     """
     Asks a question using the Responses API, maintaining conversation history.
     """
     vector_store_id = get_or_create_vector_store()
     system_prompt = load_system_prompt()
+
+    # Combine user question with their context
+    if user_context:
+        q = f"User Context:\n{user_context}\n\nQuestion:\n{q}"
 
     print("\nThinking...")
     try:
@@ -147,7 +151,8 @@ def main():
             if not question.strip():
                 continue
 
-            response_text, new_response_id = ask(question, previous_response_id)
+            # For local testing, we don't have user_context
+            response_text, new_response_id = ask(question, previous_response_id=previous_response_id)
             previous_response_id = new_response_id
 
             if response_text:

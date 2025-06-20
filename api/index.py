@@ -14,6 +14,7 @@ app = FastAPI(
 # --- API Models ---
 class ChatRequest(BaseModel):
     question: str = Field(..., description="The user's question for the assistant.")
+    user_context: Optional[str] = Field(None, description="The user's preferences and card information.")
     previous_response_id: Optional[str] = Field(None, description="The ID of the previous response to maintain conversation context.")
 
 class ChatResponse(BaseModel):
@@ -46,7 +47,8 @@ async def chat_with_assistant(request: ChatRequest):
     Sends a question to the assistant and gets a response, maintaining conversation history.
     """
     response_text, new_response_id = ask(
-        request.question, 
+        request.question,
+        user_context=request.user_context,
         previous_response_id=request.previous_response_id
     )
     return ChatResponse(response_text=response_text, response_id=new_response_id) 
