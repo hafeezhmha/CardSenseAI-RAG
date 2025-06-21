@@ -8,7 +8,6 @@ from openai import OpenAI
 try:
     load_dotenv()
 except Exception:
-    # Silently continue if .env cannot be loaded
     pass
 
 client = OpenAI()
