@@ -34,7 +34,8 @@ def get_or_create_assistant():
     if assistant_id:
         print(f"Found existing assistant ID: {assistant_id}")
         # Optional: Update assistant if needed
-        # client.beta.assistants.update(assistant_id, tool_resources={"file_search": {"vector_store_ids": [vector_store_id]}})
+        system_prompt = load_system_prompt()
+        client.beta.assistants.update(assistant_id, instructions=system_prompt, tool_resources={"file_search": {"vector_store_ids": [vector_store_id]}})
         return assistant_id
 
     print("Assistant ID not found. Creating a new assistant...")
