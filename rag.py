@@ -164,7 +164,13 @@ def ask(q, user_context=None, previous_response_id=None):
         q = f"User Context:\n{user_context}\n\nQuestion:\n{q}"
     else:
         # Add a clear instruction when no user context is provided
-        q = f"Note: The user has not provided any information about their credit cards yet. Please do not assume they have any specific cards.\n\nQuestion: {q}"
+        instruction = (
+            "The user has not provided context about which cards they own. If they ask a question "
+            "like 'what card should I use?', your first step is to ask them what cards they currently have. "
+            "Do not recommend a new card until you know what they already possess. For example, ask: "
+            "'To give you the best recommendation, could you tell me which credit cards you currently have?'"
+        )
+        q = f"Important instruction for you, the AI: {instruction}\n\nQuestion from user: {q}"
 
     print("\nThinking...")
     try:
